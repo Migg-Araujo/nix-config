@@ -1,29 +1,26 @@
-# ~/nixos-config/home.nix
-
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, unstablePkgs, ... }: # Recebendo 'unstablePkgs'
 
 {
   home.username = "migg";
   home.homeDirectory = "/home/migg";
-  
-  # Home Manager Version
-  home.stateVersion = "24.05";
-  
-  # Packages for the user
-  home.packages = with pkgs; [
-    nvim
-    git
-  ];
-  
-  # Example
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      ll = "ls -lh";
-      update = "sudo nixos-rebuild switch --flake ~/nixos-config#cappuccino";
-    };
-  };
 
-  # Example for dotfile
-  # home.file.".config/meu-app/config.conf".text = "conteúdo da config...";
+  # Adicione pacotes Home Manager, usando a versão unstable quando possível
+  home.packages = [ 
+    # tpanel
+    inputs.tpanel.packages.${pkgs.system}.default 
+    # wezterm unstable (redundante, mas garante que o Home Manager o veja)
+    unstablePkgs.wezterm 
+  ];
+
+  # Habilita e configura o wezterm via Home Manager
+  programs.wezterm = {
+    enable = true;
+    # Você pode colocar sua configuração Lua aqui:
+    # extraConfig = "return {}"; 
+  };
+  
+  # Você pode habilitar e configurar o firefox aqui se necessário (ex: extensões)
+  # programs.firefox = { enable = true; ... };
+
+  home.stateVersion = "23.11";
 }
