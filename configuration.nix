@@ -1,8 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, inputs, unstablePkgs, ... }: # Recebendo 'unstablePkgs'
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -11,7 +7,6 @@
       ./modules/programs/hyprland.nix
     ];
     
-  # ... (resto das configurações de nix, boot, networking, i18n, etc. permanecem iguais)
   nix.settings.experimental-features = ["nix-command" "flakes"];	
   
   # Bootloader.
@@ -21,6 +16,7 @@
   networking.hostName = "cappuccino";
   networking.networkmanager.enable = true;
 
+  # Ajustado para São Paulo
   time.timeZone = "America/Sao_Paulo";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -35,22 +31,23 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-
+  
   services.xserver.xkb = {
     layout = "br";
     variant = "";
-
-  hardware.enableAllFirmware = true; 
-  
-  # Configuração Específica para Drivers AMD/Radeon (Mesa)
-  services.xserver.videoDrivers = [ "amdgpu" ];
   };
-  console.keyMap = "br-abnt2";
+  
+  # Firmware para seus drivers AMD
+  hardware.enableAllFirmware = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
+  console.keyMap = "br-abnt2";
+  
   users.users.migg = {
     isNormalUser = true;
     description = "Miguel Araújo";
-    extraGroups = [ "networkmanager" "wheel" ];
+    # **CORREÇÃO AQUI:** 'extraGroup' [Source 34] renomeado para 'groups'
+    groups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
   
@@ -65,12 +62,13 @@
     wget
     git
     # Terminal Wezterm (Unstable)
-    unstablePkgs.wezterm
+    wezterm
     # Navegador Firefox (Unstable)
-    unstablePkgs.firefox
+    firefox
     # tpanel
     inputs.tpanel.packages.${pkgs.system}.default
   ];
 
-  system.stateVersion = "23.11"; 
+  # **CORREÇÃO AQUI:** Atualizado para a versão unstable atual [Source 37]
+  system.stateVersion = "24.05"; 
 }
