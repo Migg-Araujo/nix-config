@@ -15,7 +15,10 @@
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
     # TPanel
-    tpanel.url = "github:Migg-Araujo/tpanel";
+    tpanel = {
+      url = "github:Migg-Araujo/tpanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ...}@inputs:
@@ -35,7 +38,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.migg = import ./users/migg/home.nix;
+            home-manager.users.migg = import ./users/migg/cappuccino.nix;
           }
         ];
       };
@@ -50,7 +53,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.migg = import ./users/migg/home.nix;
+            home-manager.users.migg = import ./users/migg/latte.nix;
           }
         ];
       };
