@@ -13,6 +13,9 @@
 
     # Hardware Otimizations
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
+
+    # TPanel
+    tpanel.url = "github:Migg-Araujo/tpanel";
   };
 
   outputs = { self, nixpkgs, home-manager, ...}@inputs:
@@ -21,13 +24,13 @@
       system = "x86_64-linux";
   in{
     nixosConfigurations = {
-      
-      # Latte Configurations
-      latte = lib.nixosSystem {
+
+      # Cappuccino Configurations
+      cappuccino = lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/latte/default.nix
+          ./hosts/cappuccino/default.nix
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -36,13 +39,13 @@
           }
         ];
       };
-
-      # Cappuccino Configurations
-      cappuccino = lib.nixosSystem {
+        
+      # Latte Configurations
+      latte = lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/cappuccino/default.nix
+          ./hosts/latte/default.nix
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
