@@ -1,5 +1,5 @@
 {
-  description = "Migg's Nix Flake ";
+  description = "Migg's Nix Flake";
 
   inputs = {
     # Nix Packages
