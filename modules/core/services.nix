@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # --- SOM (Pipewire) ---
@@ -24,4 +24,13 @@
   # Habilita o suporte a discos externos e pendrives (montagem automática)
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+
+  services.displayManager.ly = {
+    enable = true;
+    # Configurações opcionais para o Ly (estética cafeteria)
+    settings = {
+      #animation = "matrix"; # Aquela animação clássica de queda de caracteres
+      restore = true;       # Restaura a última sessão usada
+    };
+  };
 }

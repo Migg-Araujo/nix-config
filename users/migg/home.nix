@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -11,6 +11,12 @@
 
   # Universal Packages
   home.packages = with pkgs; [
+    firefox
+    wezterm
+    git
+    neovim
+    zsh
+    starship
   ];
 
   # Home Manager Configuration

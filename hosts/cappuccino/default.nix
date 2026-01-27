@@ -20,17 +20,14 @@
   networking.hostName = "cappuccino";
 
   # Bootloader GRUB
-  boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    efiSupport = true;
-  };
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Kernel Zen
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  #boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Tpanel Configuration
-  environment.systemPackages = [ inputs.tpanel.packages.${system}.default ];
+  environment.systemPackages = [ inputs.tpanel.packages.${pkgs.system}.default ];
 
   system.stateVersion = "25.05";
 }
