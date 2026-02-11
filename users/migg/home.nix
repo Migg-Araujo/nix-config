@@ -2,7 +2,10 @@
 
 {
   imports = [
-    #../../modules/home/wezterm.nix
+    ../../modules/home/wezterm.nix
+    ../../modules/home/firefox.nix
+    ../../modules/home/git.nix
+    ../../modules/home/nvim.nix
   ];
 
   # Home Settings
@@ -11,12 +14,6 @@
 
   # Universal Packages
   home.packages = with pkgs; [
-    firefox
-    wezterm
-    git
-    neovim
-    zsh
-    starship
   ];
 
   # Home Manager Configuration
