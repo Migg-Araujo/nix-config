@@ -6,6 +6,7 @@
     ../../modules/home/firefox.nix
     ../../modules/home/git.nix
     ../../modules/home/nvim.nix
+    ../../modules/home/superfile.nix
   ];
 
   # Home Settings

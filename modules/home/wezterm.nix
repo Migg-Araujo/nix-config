@@ -2,8 +2,8 @@
 
 {
   programs.wezterm = {
-    enable = true
-  }
+    enable = true;
+  };
 
   imports = [
     ./zsh.nix

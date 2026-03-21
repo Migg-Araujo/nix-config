@@ -24,7 +24,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Kernel Zen
-  #boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Tpanel Configuration
   environment.systemPackages = [ inputs.tpanel.packages.${pkgs.system}.default ];
