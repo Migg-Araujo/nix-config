@@ -1,13 +1,6 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}: {
-  imports = [
+exit{ config, pkgs, inputs, ... xxx}: { imports = [
     # Hardware Configuration
-    ./hardware.nix
-
+    ./hardware.nix logout
     # Nix Configuration
     ../../modules/core/users.nix
     ../../modules/core/locale.nix
@@ -17,9 +10,6 @@
   ];
 
   # Hyprland Configurations
-  programs.hyprland.enable = true;
-  programs.hyprland.xwayland.enable = true;
-
   environment.pathsToLink = [
     "/share/applications"
     "/share/xdg-desktop-portal"

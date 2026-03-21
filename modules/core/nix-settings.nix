@@ -1,15 +1,21 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   # Allow Unfree Software
   nixpkgs.config.allowUnfree = true;
-  
+
   # Network Configurations
   networking.networkmanager.enable = true;
 
   # Nix Settings
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     auto-optimise-store = true;
   };
 

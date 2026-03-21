@@ -1,18 +1,274 @@
-{ pkgs, ... }:
-
 {
-  programs.hyprland = {
+  pkgs,
+  inputs,
+  args,
+  ...
+}: let
+  # Hyprland
+  border_size = 0;
+  gaps_in = 5;
+  gaps_out = 10;
+  gaps_ws = -10;
+  rounding = 8;
+  active_border_col = "rgba(90ceaaff) rgba(ecd3a0ff) 45deg";
+  inactive_border_col = "rgba(86aaeccc) rgba(93cee9cc) 45deg";
+
+  # Apps
+  terminal = "wezterm";
+  floating_terminal = "wezterm start --class wezterm-floating";
+  editor = "wezterm -e nvim";
+  browser = "firefox --new-window";
+  spotify = "wezterm start --class wezterm-floating -e spotify_player";
+  filemanager = "wezterm -e superfile";
+  floating_filemanager = "wezterm star --class wezterm-floating -e superfile";
+  wallpaper_path = "/home/migg/Wallpapers/wallpaper1.jpg";
+in {
+  imports = [
+    ./hyprlock.nix
+    #./hyprpaper.nix
+  ];
+
+  home.packages = with pkgs; [
+    ags
+    #hyprpaper
+    swaybg
+    bibata-cursors
+  ];
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    # x11.enable = true; # Opcional, se usar apps X11
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic"; # Ou "Bibata-Modern-Ice" se preferir o branco
+    size = 16;
+  };
+
+  wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-  };
+    systemd.variables = ["--all"];
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
+    plugins = with pkgs.hyprlandPlugins; [
+      # hyprexpo
+    ];
 
-  environment.systemPackages = with pkgs; [
-    bibata-cursors
-    hyprpaper
-    libnotify
-  ];
+    settings = {
+      # See https://wiki.hyprland.org/Configuring/Multi-GPU
+      # env = "AQ_DRM_DEVICES,/dev/dri/card2";
+
+      #-- Output: Configurado para seu Desktop (1080p 75Hz)
+      monitor = [
+        "HDMI-A-1,1920x1080@75,0x0,1"
+      ];
+
+      #-- Input: Apenas teclado e mouse
+      input = {
+        kb_layout = "br";
+        kb_variant = "";
+        kb_model = "abnt2";
+
+        sensitivity = -0.7;
+        scroll_method = "2 fg";
+      };
+
+      env = [
+        "XCURSOR_SIZE,16"
+        "XCURSOR_THEME,Bibata-Modern-Classic"
+      ];
+
+      #-- General
+      general = {
+        border_size = border_size;
+        gaps_in = gaps_in;
+        gaps_out = gaps_out;
+        gaps_workspaces = gaps_ws;
+        layout = "master";
+        resize_on_border = true;
+        "col.active_border" = active_border_col;
+        "col.inactive_border" = inactive_border_col;
+      };
+
+      cursor.inactive_timeout = 0;
+
+      misc = {
+        disable_hyprland_logo = true;
+        force_default_wallpaper = 1;
+        vfr = true;
+        vrr = 1;
+      };
+
+      ecosystem = {
+        no_update_news = true;
+        no_donation_nag = true;
+      };
+
+      #-- Decoration
+      decoration = {
+        rounding = rounding;
+        active_opacity = 1.0;
+        inactive_opacity = 0.95;
+        fullscreen_opacity = 1.0;
+
+        blur = {
+          enabled = false;
+          size = 4;
+          passes = 3;
+          new_optimizations = true;
+          xray = false;
+          special = true;
+          brightness = 1;
+          noise = 0.02;
+          contrast = 1;
+          popups = true;
+          popups_ignorealpha = 0.6;
+        };
+        shadow = {
+          enabled = false;
+        };
+      };
+
+      #-- Animations
+      animations = {
+        enabled = true;
+        bezier = [
+          "zoom, 0.05, 0.7, 0.1, 1.0"
+        ];
+        animation = [
+          "windows, 1, 1, zoom, slide"
+          "windowsIn, 1, 1, zoom, slide"
+          "windowsOut, 1, 1, zoom, slidevert"
+          "windowsMove, 1, 1, zoom, slide"
+          "fade, 1, 2, zoom"
+          "workspaces, 1, 1, zoom, slide"
+        ];
+      };
+
+      #-- Layout : Master
+      master = {
+        allow_small_split = false;
+        special_scale_factor = 0.8;
+        mfact = 0.5;
+        new_on_top = false;
+        orientation = "left";
+        smart_resizing = true;
+        drop_at_cursor = true;
+      };
+
+      #-- Window Rules
+      windowrule = [
+        "float on, center on, size 800 600, match:class org.pulseaudio.pavucontrol"
+        "float on, center on, size 1200 800, match:class (com.ghostty.floating|wezterm-floating)"
+        "float on, center on, size 900 700, match:class GalaxyBudsClient"
+        "float on, center on, size 900 700, match:class (org.kde.kdeconnect.sms|org.kde.kdeconnect.app)"
+        "workspace 7 silent, match:class (discord|org.telegram.desktop)"
+      ];
+
+      gesture = [
+        "3, horizontal, workspace"
+      ];
+
+      bindm = [
+        "SUPER,mouse:273,resizewindow"
+        "SUPER,mouse:272,movewindow"
+      ];
+
+      bind = [
+        # apps
+        "SUPER, T, exec, ${terminal}"
+        "SUPER, F, exec, ${filemanager}"
+        "SUPER, E, exec, ${editor}"
+        "SUPER, B, exec, ${browser}"
+        "SUPER, D, exec, discord"
+
+        "SUPER_SHIFT, T, exec, ${floating_terminal}"
+        "SUPER_SHIFT, F, exec, ${floating_filemanager}"
+        "SUPER_SHIFT, S, exec, hypr-screenshot"
+
+        # tpanel
+        "SUPER_SHIFT, B, exec, ags toggle bar"
+        "SUPER_SHIFT, C, exec, ags toggle control-center"
+        "SUPER_SHIFT, R, exec, ags quit; ${inputs.tpanel.packages.${pkgs.system}.default}/bin/tpanel"
+        # hyprland
+        "SUPER, Q, killactive"
+        "SUPER, C, killactive"
+        "SUPER_SHIFT, Q, forcekillactive"
+        "SUPER_SHIFT, F, fullscreen, 0"
+        "SUPER_SHIFT, Space, exec, hyprctl dispatch togglefloating; hyprctl dispatch resizeactive exact 1200 800; hyprctl dispatch centerwindow;"
+        "SUPER_SHIFT, P, exec, hyprctl dispatch pin"
+
+        # lock
+        "SUPER_SHIFT, L, exec, hyprlock"
+
+        # change focus
+        "SUPER, left,  movefocus, l"
+        "SUPER, right, movefocus, r"
+        "SUPER, up,    movefocus, u"
+        "SUPER, down,  movefocus, d"
+
+        # move active
+        "SUPER_SHIFT, left,  movewindow, l"
+        "SUPER_SHIFT, right, movewindow, r"
+        "SUPER_SHIFT, up,    movewindow, u"
+        "SUPER_SHIFT, down,  movewindow, d"
+
+        # workspaces
+        "SUPER, 1, workspace, 1"
+        "SUPER, 2, workspace, 2"
+        "SUPER, 3, workspace, 3"
+        "SUPER, 4, workspace, 4"
+        "SUPER, 5, workspace, 5"
+        "SUPER, 6, workspace, 6"
+        "SUPER, 7, workspace, 7"
+
+        # send to workspaces
+        "SUPER_SHIFT, 1, movetoworkspacesilent, 1"
+        "SUPER_SHIFT, 2, movetoworkspacesilent, 2"
+        "SUPER_SHIFT, 3, movetoworkspacesilent, 3"
+        "SUPER_SHIFT, 4, movetoworkspacesilent, 4"
+        "SUPER_SHIFT, 5, movetoworkspacesilent, 5"
+        "SUPER_SHIFT, 6, movetoworkspacesilent, 6"
+        "SUPER_SHIFT, 7, movetoworkspacesilent, 7"
+      ];
+
+      # Workspaces direcionados apenas para o HDMI
+      workspace = [
+        "1, monitor:HDMI-A-1, default:true"
+        "2, monitor:HDMI-A-1"
+        "3, monitor:HDMI-A-1"
+        "4, monitor:HDMI-A-1"
+        "5, monitor:HDMI-A-1"
+        "6, monitor:HDMI-A-1"
+        "7, monitor:HDMI-A-1"
+      ];
+
+      binde = [
+        # resize active
+        "SUPER_CTRL, left,  resizeactive, -20 0"
+        "SUPER_CTRL, right, resizeactive, 20 0"
+        "SUPER_CTRL, up,    resizeactive, 0 -20"
+        "SUPER_CTRL, down,  resizeactive, 0 20"
+        "SUPER_CTRL, equal, exec, hyprctl dispatch layoutmsg mfact exact 0.5;"
+
+        # move active (Floating Only)
+        "SUPER_ALT, left,  moveactive, -20 0"
+        "SUPER_ALT, right, moveactive, 20 0"
+        "SUPER_ALT, up,    moveactive, 0 -20"
+        "SUPER_ALT, down,  moveactive, 0 20"
+        "SUPER_ALT, equal, exec, hyprctl dispatch centerwindow;"
+
+        # speaker and mic volume control (mantidos para o desktop)
+        " , XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%+"
+        " , XF86AudioLowerVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%-"
+        " , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        " , XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+      ];
+
+      "exec-once" = [
+        "${inputs.tpanel.packages.${pkgs.system}.default}/bin/tpanel"
+        #"hyprpaper"
+        "swaybg -i ${wallpaper_path} -m fill"
+        "hyprctl setcursor Bibata-Modern-Classic 16"
+      ];
+    };
+  };
 }

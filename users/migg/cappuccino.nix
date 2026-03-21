@@ -1,7 +1,15 @@
-{ config, pkgs, inputs, ... }:
-
 {
-  imports = [ ./home.nix ];
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    ./home.nix
+
+    # Hyprland Configuration
+    ../../modules/desktop/hyprland.nix
+  ];
 
   # Exclusive PC Packages
   home.packages = with pkgs; [
