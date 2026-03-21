@@ -100,7 +100,28 @@
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "tnvim": "tnvim",
         "tpanel": "tpanel"
+      }
+    },
+    "tnvim": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1774112414,
+        "narHash": "sha256-pCFQcloq6EWwAtOxytdr8Ih2MDkcGkBKCXXRXfD//qI=",
+        "owner": "Migg-Araujo",
+        "repo": "nvim",
+        "rev": "8d6965b84fcfdfee5e3194be5f927441d868a9cf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Migg-Araujo",
+        "repo": "nvim",
+        "type": "github"
       }
     },
     "tpanel": {

@@ -19,7 +19,14 @@
       url = "github:Migg-Araujo/tpanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+   # Nvim
+    tnvim = {
+      url = "github:Migg-Araujo/nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
+
 
   outputs = { self, nixpkgs, home-manager, ...}@inputs:
   let
