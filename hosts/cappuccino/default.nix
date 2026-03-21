@@ -28,9 +28,10 @@
   # Hostname
   networking.hostName = "cappuccino";
 
-  # Bootloader GRUB
+  # Bootloader SystemMD
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.timeout = 0;
 
   # Kernel Zen
   boot.kernelPackages = pkgs.linuxPackages_zen;

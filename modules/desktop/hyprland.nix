@@ -20,27 +20,24 @@
   browser = "firefox --new-window";
   spotify = "wezterm start --class wezterm-floating -e spotify_player";
   filemanager = "wezterm -e superfile";
-  floating_filemanager = "wezterm star --class wezterm-floating -e superfile";
+  floating_filemanager = "wezterm start --class wezterm-floating -e superfile";
   wallpaper_path = "/home/migg/Wallpapers/wallpaper1.jpg";
 in {
   imports = [
     ./hyprlock.nix
-    #./hyprpaper.nix
   ];
 
   home.packages = with pkgs; [
     ags
-    #hyprpaper
     swaybg
-    bibata-cursors
+    phinger-cursors
   ];
 
   home.pointerCursor = {
     gtk.enable = true;
-    # x11.enable = true; # Opcional, se usar apps X11
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic"; # Ou "Bibata-Modern-Ice" se preferir o branco
-    size = 16;
+    package = pkgs.phinger-cursors;
+    name = "phinger-cursors-dark";
+    size = 8;
   };
 
   wayland.windowManager.hyprland = {
@@ -56,12 +53,10 @@ in {
       # See https://wiki.hyprland.org/Configuring/Multi-GPU
       # env = "AQ_DRM_DEVICES,/dev/dri/card2";
 
-      #-- Output: Configurado para seu Desktop (1080p 75Hz)
       monitor = [
         "HDMI-A-1,1920x1080@75,0x0,1"
       ];
 
-      #-- Input: Apenas teclado e mouse
       input = {
         kb_layout = "br";
         kb_variant = "";
@@ -72,8 +67,8 @@ in {
       };
 
       env = [
-        "XCURSOR_SIZE,16"
-        "XCURSOR_THEME,Bibata-Modern-Classic"
+        "XCURSOR_SIZE,8"
+        "XCURSOR_THEME,phinger-cursors-dark"
       ];
 
       #-- General
@@ -192,7 +187,7 @@ in {
         "SUPER, Q, killactive"
         "SUPER, C, killactive"
         "SUPER_SHIFT, Q, forcekillactive"
-        "SUPER_SHIFT, F, fullscreen, 0"
+        "SUPER_CTRL, F, fullscreen, 0"
         "SUPER_SHIFT, Space, exec, hyprctl dispatch togglefloating; hyprctl dispatch resizeactive exact 1200 800; hyprctl dispatch centerwindow;"
         "SUPER_SHIFT, P, exec, hyprctl dispatch pin"
 
@@ -230,7 +225,7 @@ in {
         "SUPER_SHIFT, 7, movetoworkspacesilent, 7"
       ];
 
-      # Workspaces direcionados apenas para o HDMI
+      # Workspaces
       workspace = [
         "1, monitor:HDMI-A-1, default:true"
         "2, monitor:HDMI-A-1"
@@ -256,7 +251,7 @@ in {
         "SUPER_ALT, down,  moveactive, 0 20"
         "SUPER_ALT, equal, exec, hyprctl dispatch centerwindow;"
 
-        # speaker and mic volume control (mantidos para o desktop)
+        # speaker and mic volume control
         " , XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%+"
         " , XF86AudioLowerVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%-"
         " , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -265,9 +260,8 @@ in {
 
       "exec-once" = [
         "${inputs.tpanel.packages.${pkgs.system}.default}/bin/tpanel"
-        #"hyprpaper"
         "swaybg -i ${wallpaper_path} -m fill"
-        "hyprctl setcursor Bibata-Modern-Classic 16"
+        "hyprctl setcursor phinger-cursors-dark 16"
       ];
     };
   };
