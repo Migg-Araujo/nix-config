@@ -1,36 +1,35 @@
-{ config, pkgs, inputs, ... }:
-
 {
-  # --- SOM (Pipewire) ---
-  # O Pipewire é moderno e essencial para áudio de baixa latência e Wayland
-  services.pulseaudio.enable = false; # Desativa o antigo para não dar conflito
-  security.rtkit.enable = true;      # Necessário para o Pipewire ter prioridade
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  # Pipewire Sound
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # jack.enable = true; # Descomente se for trabalhar com produção musical
   };
 
-  # --- BLUETOOTH ---
+  # Bluetooth
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true; # Gerenciador gráfico de bluetooth (funciona bem no i3 e Hyprland)
+  hardware.bluetooth.powerOnBoot = true;
 
-  # --- IMPRESSÃO (CUPS) ---
+  # Printing (CUPS)
   services.printing.enable = true;
 
-  # --- EXTRAS ÚTEIS NO CORE ---
-  # Habilita o suporte a discos externos e pendrives (montagem automática)
+  # Extra Utilities
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+  # LY Display Manager
   services.displayManager.ly = {
     enable = true;
-    # Configurações opcionais para o Ly (estética cafeteria)
     settings = {
-      #animation = "matrix"; # Aquela animação clássica de queda de caracteres
-      restore = true;       # Restaura a última sessão usada
+      restore = true;
     };
   };
 }
