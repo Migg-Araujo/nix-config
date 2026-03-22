@@ -1,10 +1,12 @@
-{ pkgs, ...}:
-
-{
+{pkgs, ...}: {
   programs.git = {
     enable = true;
-    userName  = "Miguel Araújo";
-    userEmail = "miguelbzr6@gmail.com";
+
+    settings = {
+      user = {
+        name = "Miguel Araújo";
+        email = "miguelbzr6@gmail.com";
+      };
+    };
   };
 }
-
