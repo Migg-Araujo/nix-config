@@ -10,6 +10,7 @@
     ../../modules/home/git.nix
     ../../modules/home/nvim.nix
     ../../modules/home/superfile.nix
+    ../../modules/home/bluetui.nix
   ];
 
   # Home Settings
@@ -19,7 +20,6 @@
   # Universal Packages
   home.packages = with pkgs; [
     discord
-    bluetui
   ];
 
   # Home Manager Configuration

@@ -18,13 +18,16 @@
   floating_terminal = "wezterm start --class wezterm-floating";
   editor = "wezterm -e nvim";
   browser = "firefox --new-window";
-  spotify = "wezterm start --class wezterm-floating -e spotify_player";
   filemanager = "wezterm -e superfile";
   floating_filemanager = "wezterm start --class wezterm-floating -e superfile";
+  bluetooth = "wezterm start --class wezterm-floating -e bluetui";
+
+  # Wallpaper Path
   wallpaper_path = "/home/migg/Wallpapers/wallpaper1.jpg";
 in {
   imports = [
     ./hyprlock.nix
+    ./hyprshot.nix
   ];
 
   home.packages = with pkgs; [
@@ -167,21 +170,26 @@ in {
       ];
 
       bind = [
+        # print
+        "SHIFT, Print, exec, hyprshot -m output"
+        ", Print, exec, hyprshot -m region"
         # apps
         "SUPER, T, exec, ${terminal}"
         "SUPER, F, exec, ${filemanager}"
         "SUPER, E, exec, ${editor}"
         "SUPER, B, exec, ${browser}"
         "SUPER, D, exec, discord"
+        "SUPER, S, exec, steam"
 
         "SUPER_SHIFT, T, exec, ${floating_terminal}"
         "SUPER_SHIFT, F, exec, ${floating_filemanager}"
-        "SUPER_SHIFT, S, exec, hypr-screenshot"
+        "SUPER_SHIFT, B, exec, ${bluetooth}"
 
         # tpanel
         "SUPER_SHIFT, B, exec, ags toggle bar"
         "SUPER_SHIFT, C, exec, ags toggle control-center"
         "SUPER_SHIFT, R, exec, ags quit; ${inputs.tpanel.packages.${pkgs.system}.default}/bin/tpanel"
+
         # hyprland
         "SUPER, Q, killactive"
         "SUPER, C, killactive"
