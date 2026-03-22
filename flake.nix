@@ -20,51 +20,60 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-   # Nvim
+    # Nvim
     tnvim = {
       url = "github:Migg-Araujo/nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Prism Laucher
+    prismlauncher = {
+      url = "github:PrismLauncher/PrismLauncher";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-
-  outputs = { self, nixpkgs, home-manager, ...}@inputs:
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
     lib = nixpkgs.lib;
-      system = "x86_64-linux";
-  in{
+    system = "x86_64-linux";
+  in {
     nixosConfigurations = {
-
       # Cappuccino Configurations
       cappuccino = lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/cappuccino/default.nix
-          home-manager.nixosModules.home-manager {
+          home-manager.nixosModules.home-manager
+          {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = {inherit inputs;};
             home-manager.users.migg = import ./users/migg/cappuccino.nix;
           }
         ];
       };
-        
+
       # Latte Configurations
       latte = lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/latte/default.nix
-          home-manager.nixosModules.home-manager {
+          home-manager.nixosModules.home-manager
+          {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = {inherit inputs;};
             home-manager.users.migg = import ./users/migg/latte.nix;
           }
         ];
       };
-
     };
   };
 }

@@ -1,6 +1,9 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ../../modules/home/wezterm.nix
     ../../modules/home/firefox.nix
@@ -15,11 +18,13 @@
 
   # Universal Packages
   home.packages = with pkgs; [
+    discord
+    bluetui
   ];
 
   # Home Manager Configuration
   programs.home-manager.enable = true;
 
   # State Version
-  home.stateVersion = "25.05"; 
+  home.stateVersion = "25.05";
 }

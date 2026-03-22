@@ -10,6 +10,12 @@
   # Network Configurations
   networking.networkmanager.enable = true;
 
+  # Graphic Suport
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   # Nix Settings
   nix.settings = {
     experimental-features = [

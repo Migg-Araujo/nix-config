@@ -155,7 +155,6 @@ in {
         "float on, center on, size 1200 800, match:class (com.ghostty.floating|wezterm-floating)"
         "float on, center on, size 900 700, match:class GalaxyBudsClient"
         "float on, center on, size 900 700, match:class (org.kde.kdeconnect.sms|org.kde.kdeconnect.app)"
-        "workspace 7 silent, match:class (discord|org.telegram.desktop)"
       ];
 
       gesture = [
