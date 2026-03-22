@@ -57,7 +57,7 @@ in {
       # env = "AQ_DRM_DEVICES,/dev/dri/card2";
 
       monitor = [
-        "HDMI-A-1,1920x1080@75,0x0,1"
+        "DP-1,1920x1080@60,0x0,1"
       ];
 
       input = {
@@ -234,13 +234,13 @@ in {
 
       # Workspaces
       workspace = [
-        "1, monitor:HDMI-A-1, default:true"
-        "2, monitor:HDMI-A-1"
-        "3, monitor:HDMI-A-1"
-        "4, monitor:HDMI-A-1"
-        "5, monitor:HDMI-A-1"
-        "6, monitor:HDMI-A-1"
-        "7, monitor:HDMI-A-1"
+        "1, monitor:DP-1, default:true"
+        "2, monitor:DP-1"
+        "3, monitor:DP-1"
+        "4, monitor:DP-1"
+        "5, monitor:DP-1"
+        "6, monitor:DP-1"
+        "7, monitor:DP-1"
       ];
 
       binde = [
