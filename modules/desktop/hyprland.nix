@@ -21,6 +21,7 @@
   filemanager = "wezterm -e superfile";
   floating_filemanager = "wezterm start --class wezterm-floating -e superfile";
   bluetooth = "wezterm start --class wezterm-floating -e bluetui";
+  audiomanager = "wezterm start --class wezterm-floating -e pulsemixer";
 
   # Wallpaper Path
   wallpaper_path = "/home/migg/Wallpapers/wallpaper1.jpg";
@@ -72,6 +73,7 @@ in {
       env = [
         "XCURSOR_SIZE,8"
         "XCURSOR_THEME,phinger-cursors-dark"
+        "HYPRSHOT_DIR,/home/migg/Pictures/Screenshots"
       ];
 
       #-- General
@@ -178,6 +180,7 @@ in {
         "SUPER, F, exec, ${filemanager}"
         "SUPER, E, exec, ${editor}"
         "SUPER, B, exec, ${browser}"
+        "SUPER, A, exec, ${audiomanager}"
         "SUPER, D, exec, discord"
         "SUPER, S, exec, steam"
 

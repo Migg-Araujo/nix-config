@@ -11,6 +11,7 @@
     ../../modules/home/nvim.nix
     ../../modules/home/superfile.nix
     ../../modules/home/bluetui.nix
+    ../../modules/home/pulsemixer.nix
   ];
 
   # Home Settings
