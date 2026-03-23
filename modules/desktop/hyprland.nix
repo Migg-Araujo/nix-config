@@ -10,8 +10,8 @@
   gaps_out = 10;
   gaps_ws = -10;
   rounding = 8;
-  active_border_col = "rgba(90ceaaff) rgba(ecd3a0ff) 45deg";
-  inactive_border_col = "rgba(86aaeccc) rgba(93cee9cc) 45deg";
+  active_border_col = "rgba(6791c9ff)";
+  inactive_border_col = "rgba(00000000)";
 
   # Apps
   terminal = "wezterm";
@@ -106,7 +106,7 @@ in {
       decoration = {
         rounding = rounding;
         active_opacity = 1.0;
-        inactive_opacity = 0.95;
+        inactive_opacity = 0.75;
         fullscreen_opacity = 1.0;
 
         blur = {
