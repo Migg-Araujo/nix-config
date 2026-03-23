@@ -19,9 +19,6 @@
   #I3WM Configurations
   services.xserver = {
     enable = true;
-    layout = "br";
-    xkbVariant = "abnt2";
-
     windowManager.i3.enable = true;
   };
 
