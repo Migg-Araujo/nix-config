@@ -16,14 +16,19 @@
     ../../modules/core/fonts.nix
   ];
 
-  # Hyprland Configurations
-  # programs.hyprland.enable = true;
-  # programs.hyprland.xwayland.enable = true;
+  #I3WM Configurations
+  services.xserver = {
+    enable = true;
+    layout = "br";
+    xkbVariant = "abnt2";
 
-  # environment.pathsToLink = [
-  #   "/share/applications"
-  #   "/share/xdg-desktop-portal"
-  # ];
+    windowManager.i3.enable = true;
+  };
+
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
 
   # Hostname
   networking.hostName = "latte";
