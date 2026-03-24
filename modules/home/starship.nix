@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.starship = {
     enable = true;
     settings = {
@@ -22,7 +21,7 @@
         error_symbol = "[  ➜](bold red)";
       };
 
-      git_branch.format = "[$symbol$branch]($style yellow )";
+      git_branch.format = "[$symbol$branch ]($style yellow)";
     };
   };
 }
