@@ -77,6 +77,7 @@
     solc
     dig
     lsof
+    parted
 
     python312
     python312Packages.pipx
