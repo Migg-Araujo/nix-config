@@ -16,5 +16,6 @@
     inputs.tpanel.packages.${system}.default
     inputs.prismlauncher.packages.${system}.prismlauncher
     steam
+    melonDS
   ];
 }
