@@ -4,6 +4,12 @@
   inputs,
   ...
 }: {
+  environment.systemPackages = with pkgs; [
+    protonvpn-gui
+    proton-vpn-cli
+    udiskie
+  ];
+
   # Pipewire Sound
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -21,13 +27,12 @@
   # Printing (CUPS)
   services.printing.enable = true;
 
+  # Proton VPN
+  networking.firewall.checkReversePath = false;
+
   # Extra Utilities
   services.gvfs.enable = true;
   services.udisks2.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    udiskie
-  ];
 
   systemd.user.services.udiskie = {
     description = "udiskie automounter";

@@ -272,6 +272,7 @@ in {
         "${inputs.tpanel.packages.${pkgs.system}.default}/bin/tpanel"
         "swaybg -i ${wallpaper_path} -m fill"
         "hyprctl setcursor phinger-cursors-dark 16"
+        "protonvpn connect"
       ];
     };
   };
