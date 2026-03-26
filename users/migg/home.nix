@@ -21,6 +21,7 @@
   # Universal Packages
   home.packages = with pkgs; [
     discord
+    proton-pass
   ];
 
   # Home Manager Configuration
