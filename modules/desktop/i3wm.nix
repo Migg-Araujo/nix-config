@@ -24,6 +24,7 @@ in {
       # Keybindings
       keybindings = lib.mkOptionDefault {
         "${mod}+t" = "exec wezterm";
+        "${mod}+b" = "exec firefox";
         "${mod}+d" = "exec dmenu_run";
 
         "${mod}+h" = "focus left";
@@ -31,7 +32,7 @@ in {
         "${mod}+k" = "focus up";
         "${mod}+l" = "focus right";
 
-        "${mod}+Shift+c" = "kill";
+        "${mod}+c" = "kill";
       };
 
       bars = [
