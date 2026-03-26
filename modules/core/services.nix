@@ -25,6 +25,16 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    udiskie
+  ];
+
+  systemd.user.services.udiskie = {
+    description = "udiskie automounter";
+    wantedBy = ["graphical-session.target"];
+    serviceConfig.ExecStart = "${pkgs.udiskie}/bin/udiskie";
+  };
+
   # LY Display Manager
   services.displayManager.ly = {
     enable = true;
