@@ -7,6 +7,7 @@
   imports = [
     ../../modules/home/wezterm.nix
     ../../modules/home/firefox.nix
+    ../../modules/home/librewolf.nix
     ../../modules/home/git.nix
     ../../modules/home/nvim.nix
     ../../modules/home/superfile.nix
