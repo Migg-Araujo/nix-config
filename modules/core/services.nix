@@ -18,6 +18,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
   };
 
   # Bluetooth
@@ -39,6 +40,8 @@
     wantedBy = ["graphical-session.target"];
     serviceConfig.ExecStart = "${pkgs.udiskie}/bin/udiskie";
   };
+
+  services.flatpak.enable = true;
 
   # LY Display Manager
   services.displayManager.ly = {
