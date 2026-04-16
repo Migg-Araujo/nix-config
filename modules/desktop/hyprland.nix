@@ -194,7 +194,7 @@ in {
         # tpanel
         "SUPER_SHIFT, C, exec, ags toggle control-center"
         "SUPER_SHIFT, R, exec, ags quit; ${inputs.tpanel.packages.${pkgs.system}.default}/bin/tpanel"
-        "SUPER, SUPER_L, exec, ${launcher}"
+        "SUPER, Space, exec, ${launcher}"
 
         # hyprland
         "SUPER, Q, killactive"

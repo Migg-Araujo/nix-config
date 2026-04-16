@@ -78,6 +78,7 @@
     dig
     lsof
     parted
+    jdk25
 
     python312
     python312Packages.pipx
