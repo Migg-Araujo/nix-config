@@ -76,6 +76,9 @@ in {
         "XCURSOR_SIZE,8"
         "XCURSOR_THEME,phinger-cursors-dark"
         "HYPRSHOT_DIR,/home/migg/Pictures/Screenshots"
+        "XDG_CURRENT_DESKTOP,Hyprland"
+        "XDG_SESSION_TYPE,wayland"
+        "XDG_SESSION_DESKTOP,Hyprland"
       ];
 
       #-- General

@@ -25,6 +25,10 @@
     "/share/xdg-desktop-portal"
   ];
 
+  # Steam Configurations
+  hardware.steam-hardware.enable = true;
+  services.udev.packages = [pkgs.game-devices-udev-rules];
+
   # Hostname
   networking.hostName = "cappuccino";
 
