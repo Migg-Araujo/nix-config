@@ -25,6 +25,10 @@
     "/share/xdg-desktop-portal"
   ];
 
+  # Gnome Configurations
+  services.xserver.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
   # Steam Configurations
   hardware.steam-hardware.enable = true;
   services.udev.packages = [pkgs.game-devices-udev-rules];
