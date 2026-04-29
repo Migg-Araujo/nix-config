@@ -30,13 +30,13 @@ in {
   imports = [
     ./hyprlock.nix
     ./hyprshot.nix
+    ./wofi.nix
   ];
 
   home.packages = with pkgs; [
     ags
     swaybg
     phinger-cursors
-    wofi
   ];
 
   home.pointerCursor = {

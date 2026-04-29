@@ -8,7 +8,7 @@
     ./home.nix
 
     # Hyprland Configuration
-    ../../modules/desktop/hyprland.nix
+    ../../modules/desktop/cappuccino/hyprland.nix
   ];
 
   # Exclusive PC Packages

@@ -8,7 +8,7 @@
     ./home.nix
 
     # I3WM Configuration
-    ../../modules/desktop/i3wm.nix
+    ../../modules/desktop/latte/i3wm.nix
   ];
 
   # Exclusive Notebook Packages
