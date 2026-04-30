@@ -21,7 +21,7 @@
       /* Main Window */
       window {
         margin: 0px;
-        border: 1px solid #0f0f0fff;
+        border: none;
         background-color: #0f0f0f;
         border-radius: 8px;
         font-family: "JetBrainsMono Nerd Font", "Inter";
@@ -83,6 +83,11 @@
         margin: 0;
         opacity: 0;
         border: none;
+      }
+
+      overshoot {
+        background-image: none;
+        background-color: transparent;
       }
     '';
   };

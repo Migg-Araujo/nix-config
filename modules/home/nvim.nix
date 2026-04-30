@@ -1,4 +1,8 @@
-{pkgs, inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.file = {
     ".config/nvim" = {
       recursive = true;
@@ -13,6 +17,7 @@
       vimAlias = true;
       withPython3 = true;
       withNodeJs = true;
+      withRuby = true;
     };
   };
 

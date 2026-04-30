@@ -56,6 +56,7 @@
       enableZshIntegration = true;
     };
   };
+  programs.yazi.shellWrapperName = "y";
 
   home.packages = with pkgs; [
     systemctl-tui
