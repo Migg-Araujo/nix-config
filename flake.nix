@@ -40,14 +40,13 @@
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
-    system = "x86_64-linux";
   in {
     nixosConfigurations = {
       # Cappuccino Configurations
       cappuccino = lib.nixosSystem {
-        inherit system;
         specialArgs = {inherit inputs;};
         modules = [
+          {nixpkgs.hostPlatform = "x86_64-linux";}
           ./hosts/cappuccino/default.nix
           home-manager.nixosModules.home-manager
           {
@@ -61,9 +60,9 @@
 
       # Latte Configurations
       latte = lib.nixosSystem {
-        inherit system;
         specialArgs = {inherit inputs;};
         modules = [
+          {nixpkgs.hostPlatform = "x86_64-linux";}
           ./hosts/latte/default.nix
           home-manager.nixosModules.home-manager
           {
