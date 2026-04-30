@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  programs.librewolf = {
-    enable = true;
-  };
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    librewolf
+  ];
 }

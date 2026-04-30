@@ -7,72 +7,88 @@
     enable = true;
     settings = {
       show = "drun";
-      allow_images = true; # Habilita o suporte a ícones
-      image_size = 24; # Define o tamanho dos ícones (em pixels)
-      insensitive = true; # Faz com que 'Firefox' ou 'firefox' deem o mesmo resultado
+      allow_images = true;
+      image_size = 32;
+      insensitive = true;
+      no_actions = true;
 
-      # Outras opções úteis
-      width = 500;
-      height = "300";
+      width = 400;
+      height = 600;
       prompt = "Search...";
     };
 
     style = ''
-      /* Janela Principal */
+      /* Main Window */
       window {
         margin: 0px;
-        border: 2px solid #5fb3b3;
-        background-color: #1b1e28;
-        border-radius: 12px;
+        border: 1px solid #0f0f0fff;
+        background-color: #0f0f0f;
+        border-radius: 8px;
         font-family: "JetBrainsMono Nerd Font", "Inter";
-        font-size: 14px;
+        font-size: 12pt;
       }
 
-      /* Caixa de pesquisa */
+      /* Search Box */
       #input {
         margin: 10px;
         border: none;
         border-radius: 8px;
-        color: #a6accd;
-        background-color: #232735;
+        color: #ffffff;
+        background-color: #0f0f0f;
         padding: 10px;
       }
 
-      /* Container dos itens */
+      /* Items's Container */
       #inner-box {
         margin: 10px;
         border: none;
         background-color: transparent;
       }
 
-      /* Cada item da lista */
+      /* Item */
       #entry {
         padding: 8px;
+        border: 1px solid #00000000;
         border-radius: 8px;
       }
 
-      /* Item selecionado */
-      #entry:selected {
-        background-color: #2e3440;
-        outline: none;
-      }
-
-      /* Texto do item selecionado */
-      #text:selected {
-        color: #add7ff;
+      /* Item Selected's Text */
+      #text {
+        color: #ffffff;
         font-weight: bold;
       }
 
-      /* Ajuste para os ícones */
-      #img {
-        margin-right: 12px;
+
+      /* Item Selected */
+      #entry:selected {
+        background-color: #1f1f1f;
+        border: 1px solid #6791c9;
+        outline: none;
       }
 
-      /* Esconder a scrollbar para um look mais clean */
-      #scroll {
-        margin: 0px;
+      /* Item Selected's Text */
+      #text:selected {
+        color: #6791c9;
+        font-weight: bold;
+      }
+
+      /* Icons Ajusts */
+      #img {
+        margin-right: 20px;
+      }
+
+      /* Scrollbar */
+      scrollbar {
+        width: 0;
+        margin: 0;
+        opacity: 0;
         border: none;
       }
     '';
+  };
+  xdg.desktopEntries.ranger = {
+    name = "Ranger";
+    exec = "wezterm -e ranger";
+    noDisplay = true;
   };
 }
