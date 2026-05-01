@@ -32,10 +32,25 @@
       #input {
         margin: 10px;
         border: none;
-        border-radius: 8px;
+        border-radius: 0px;
+        border-bottom: 2px solid #1f1f1f;
         color: #ffffff;
         background-color: #0f0f0f;
         padding: 10px;
+        outline: none;
+        box-shadow: none;
+      }
+
+      #input:focus {
+        margin: 10px;
+        border: none;
+        border-radius: 0px;
+        border-bottom: 2px solid #1f1f1f;
+        color: #ffffff;
+        background-color: #0f0f0f;
+        padding: 10px;
+        outline: none;
+        box-shadow: none;
       }
 
       /* Items's Container */
@@ -48,7 +63,8 @@
       /* Item */
       #entry {
         padding: 8px;
-        border: 1px solid #00000000;
+        border: none;
+        outline: none;
         border-radius: 8px;
       }
 
@@ -62,7 +78,7 @@
       /* Item Selected */
       #entry:selected {
         background-color: #1f1f1f;
-        border: 1px solid #6791c9;
+        border: none;
         outline: none;
       }
 

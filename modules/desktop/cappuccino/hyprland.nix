@@ -31,6 +31,7 @@ in {
     ./hyprlock.nix
     ./hyprshot.nix
     ./wofi.nix
+    ./waybar.nix
   ];
 
   home.packages = with pkgs; [
@@ -275,7 +276,7 @@ in {
       ];
 
       "exec-once" = [
-        "${inputs.tpanel.packages.${pkgs.system}.default}/bin/tpanel"
+        "waybar"
         "swaybg -i ${wallpaper_path} -m fill"
         "hyprctl setcursor phinger-cursors-dark 16"
         "protonvpn connect"
