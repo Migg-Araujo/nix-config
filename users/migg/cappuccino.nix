@@ -17,5 +17,6 @@
     inputs.prismlauncher.packages.${system}.prismlauncher
     steam
     melonds
+    gimp
   ];
 }
