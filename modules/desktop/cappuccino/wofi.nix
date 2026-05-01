@@ -62,7 +62,10 @@
 
       /* Item */
       #entry {
-        padding: 8px;
+        margin: 0;
+        padding: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
         border: none;
         outline: none;
         border-radius: 8px;
@@ -77,6 +80,10 @@
 
       /* Item Selected */
       #entry:selected {
+        margin: 0;
+        padding: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
         background-color: #1f1f1f;
         border: none;
         outline: none;
@@ -90,7 +97,8 @@
 
       /* Icons Ajusts */
       #img {
-        margin-right: 20px;
+        margin-right: 10px;
+        margin-left: 10px;
       }
 
       /* Scrollbar */

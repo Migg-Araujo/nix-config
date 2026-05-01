@@ -302,23 +302,25 @@
 
             #custom-quit {
               margin-right: 0;
-              padding-left: 8px;
-              padding-right: 20px;
+              padding-left: 13px;
+              padding-right: 15px;
+              border-right: 1px solid #0f0f0f;
               border-radius: 8px 0px 0px 8px;
             }
 
             #custom-reboot {
               margin-left: 0;
               margin-right: 0;
-              padding-left: 17px;
-              padding-right: 21px;
+              padding-left: 12px;
+              padding-right: 16px;
               border-radius: 0;
             }
 
             #custom-lock {
               margin-left: 0;
-              padding-left: 16px;
-              padding-right: 12px;
+              padding-left: 11px;
+              padding-right: 17px;
+              border-left: 1px solid #0f0f0f;
               border-radius: 0px 8px 8px 0px;
 
             }
