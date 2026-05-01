@@ -13,7 +13,6 @@
 
   # Exclusive PC Packages
   home.packages = with pkgs; [
-    inputs.tpanel.packages.${system}.default
     inputs.prismlauncher.packages.${system}.prismlauncher
     steam
     melonds

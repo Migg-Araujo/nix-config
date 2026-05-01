@@ -195,9 +195,7 @@ in {
         "SUPER_SHIFT, F, exec, ${floating_filemanager}"
         "SUPER_SHIFT, B, exec, ${bluetooth}"
 
-        # tpanel
-        "SUPER_SHIFT, C, exec, ags toggle control-center"
-        "SUPER_SHIFT, R, exec, ags quit; ${inputs.tpanel.packages.${pkgs.system}.default}/bin/tpanel"
+        # launcher
         "SUPER, Space, exec, ${launcher}"
 
         # hyprland

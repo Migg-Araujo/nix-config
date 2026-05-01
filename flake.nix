@@ -14,12 +14,6 @@
     # Hardware Otimizations
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
-    # TPanel
-    tpanel = {
-      url = "github:Migg-Araujo/tpanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Nvim
     tnvim = {
       url = "github:Migg-Araujo/nvim";
