@@ -44,8 +44,5 @@
   # Kernel Zen
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  # Tpanel Configuration
-  environment.systemPackages = [inputs.tpanel.packages.${pkgs.system}.default];
-
   system.stateVersion = "25.05";
 }
