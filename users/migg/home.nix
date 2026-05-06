@@ -23,6 +23,8 @@
   home.packages = with pkgs; [
     discord
     proton-pass
+    thunar
+    qalculate-gtk
   ];
 
   # Home Manager Configuration

@@ -32,6 +32,7 @@ in {
     ./hyprshot.nix
     ./wofi.nix
     ./waybar.nix
+    ./gtk.nix
   ];
 
   home.packages = with pkgs; [

@@ -115,6 +115,7 @@
       }
     '';
   };
+
   xdg.desktopEntries.ranger = {
     name = "Ranger";
     exec = "wezterm -e ranger";
