@@ -36,7 +36,22 @@
 
         "clock" = {
           format = "{:%H:%M}";
-          tooltip = false;
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          calendar = {
+            mode = "month";
+            on-scroll = 1;
+            format = {
+              months = "<span color='#6791c9'><b>{}</b></span>";
+              days = "<span color='#ffffff'><b>{}</b></span>";
+              weekdays = "<span color='#6791c9'><b>{}</b></span>";
+              today = "<span color='#6791c9'><b>{}</b></span>";
+            };
+          };
+          actions = {
+            on-click = "mode";
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
+          };
         };
 
         "hyprland/workspaces" = {
@@ -167,6 +182,15 @@
         font-family: "JetBrainsMono Nerd Font";
       }
 
+      #clock:hover {}
+
+      #calendar {
+        background: #1f1f1f;
+        border: none;
+        font-family: "JetBrainsMono Nerd Font", monospace;
+        font-size: 12pt;
+      }
+
       window#waybar {
         background-color: #0f0f0f;
         border-radius: 8px;
@@ -188,29 +212,32 @@
         transition: all 0.3s ease-in-out;
       }
 
-      #workspaces button.occupied {
+      #workspaces button {
         background-color: #6791c9;
+      }
+
+      #workspaces button.empty {
+        background-color: #1f1f1f;
       }
 
       #workspaces button.active {
         background-color: #6791c9;
         margin: 17.5px 5px;
-
         min-width: 30px;
         min-height: 15px;
         border-radius: 999px;
       }
 
-      #workspaces button:hover {
-        background-color: #1f1f1f;
+      #workspaces button.empty:hover {
+        background-color: #6791c9;
         background-image: none;
         box-shadow: none;
         text-shadow: none;
       }
 
-      #workspaces button.occupied:hover,
+      #workspaces button:hover,
       #workspaces button.active:hover {
-        background-color: #6791c9;
+        background-color: #1f1f1f;
         background-image: none;
       }
 
