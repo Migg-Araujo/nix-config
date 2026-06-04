@@ -16,6 +16,7 @@
     inputs.prismlauncher.packages.${system}.prismlauncher
     steam
     melonds
+    pcsx2
     gimp
   ];
 }
