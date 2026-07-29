@@ -23,6 +23,7 @@
   bluetooth = "wezterm start --class wezterm-floating -e bluetui";
   audiomanager = "wezterm start --class wezterm-floating -e pulsemixer";
   launcher = "wofi --show drun";
+  notify_panel = "swaync-client -t -sw";
 
   # Wallpaper Path
   wallpaper_path = "/home/migg/Wallpapers/wallpaper1.jpg";
@@ -32,6 +33,7 @@ in {
     ./hyprshot.nix
     ./wofi.nix
     ./waybar.nix
+    ./swaync.nix
     ./gtk.nix
   ];
 
@@ -198,6 +200,7 @@ in {
 
         # launcher
         "SUPER, Space, exec, ${launcher}"
+        "SUPER, N, exec, ${notify_panel}"
 
         # hyprland
         "SUPER, Q, killactive"
