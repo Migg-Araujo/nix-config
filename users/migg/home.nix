@@ -25,6 +25,7 @@
     proton-pass
     thunar
     qalculate-gtk
+    vlc
   ];
 
   # Home Manager Configuration
