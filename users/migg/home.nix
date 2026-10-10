@@ -26,6 +26,8 @@
     thunar
     qalculate-gtk
     vlc
+    easyeffects
+    deepfilternet
   ];
 
   # Home Manager Configuration

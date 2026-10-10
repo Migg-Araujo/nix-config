@@ -81,8 +81,8 @@
     parted
     jdk25
 
-    python312
-    python312Packages.pipx
+    python3
+    python3Packages.pipx
     nodejs
     pnpm
     yarn

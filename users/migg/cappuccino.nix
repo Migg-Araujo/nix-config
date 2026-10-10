@@ -18,5 +18,6 @@
     melonds
     pcsx2
     gimp
+    haguichi
   ];
 }

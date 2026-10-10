@@ -9,6 +9,7 @@
 
   # Network Configurations
   networking.networkmanager.enable = true;
+  services.logmein-hamachi.enable = true;
 
   # Graphic Suport
   hardware.graphics = {

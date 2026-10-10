@@ -44,6 +44,7 @@ in {
   ];
 
   home.pointerCursor = {
+    enable = true;
     gtk.enable = true;
     package = pkgs.phinger-cursors;
     name = "phinger-cursors-dark";
@@ -52,6 +53,7 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "hyprlang";
     xwayland.enable = true;
     systemd.variables = ["--all"];
 
@@ -64,7 +66,7 @@ in {
       # env = "AQ_DRM_DEVICES,/dev/dri/card2";
 
       monitor = [
-        "DP-1,1920x1080@60,0x0,1"
+        "HDMI-A-1,1920x1080@75,0x0,1"
       ];
 
       input = {
@@ -102,7 +104,6 @@ in {
       misc = {
         disable_hyprland_logo = true;
         force_default_wallpaper = 1;
-        vfr = true;
         vrr = 1;
       };
 
@@ -169,6 +170,7 @@ in {
         "float on, center on, size 1200 800, match:class (com.ghostty.floating|wezterm-floating)"
         "float on, center on, size 900 700, match:class GalaxyBudsClient"
         "float on, center on, size 900 700, match:class (org.kde.kdeconnect.sms|org.kde.kdeconnect.app)"
+        "opacity 1 2, match:float 1"
       ];
 
       gesture = [
@@ -246,13 +248,11 @@ in {
 
       # Workspaces
       workspace = [
-        "1, monitor:DP-1, default:true"
-        "2, monitor:DP-1"
-        "3, monitor:DP-1"
-        "4, monitor:DP-1"
-        "5, monitor:DP-1"
-        "6, monitor:DP-1"
-        "7, monitor:DP-1"
+        "1, monitor:HDMI-A-1, default:true"
+        "2, monitor:HDMI-A-1"
+        "3, monitor:HDMI-A-1"
+        "4, monitor:HDMI-A-1"
+        "5, monitor:HDMI-A-1"
       ];
 
       binde = [
@@ -277,7 +277,7 @@ in {
         " , XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       ];
 
-      "exec-once" = [
+      exec-once = [
         "waybar"
         "swaybg -i ${wallpaper_path} -m fill"
         "hyprctl setcursor phinger-cursors-dark 16"

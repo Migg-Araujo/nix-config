@@ -30,12 +30,12 @@
 
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
+    platformTheme.name = "gtk3";
     style.name = "adwaita-dark";
   };
 
   home.sessionVariables = {
     GTK_THEME = "Adwaita-dark";
-    QT_QPA_PLATFORMTHEME = "gtk2";
+    QT_QPA_PLATFORMTHEME = pkgs.lib.mkForce "gtk3";
   };
 }
