@@ -22,6 +22,7 @@
   floating_filemanager = "wezterm start --class wezterm-floating -e superfile";
   bluetooth = "wezterm start --class wezterm-floating -e bluetui";
   audiomanager = "wezterm start --class wezterm-floating -e pulsemixer";
+  music_laucher = "wezterm start --class wezterm-floating -e ytm";
   launcher = "wofi --show drun";
   notify_panel = "swaync-client -t -sw";
 
@@ -193,6 +194,7 @@ in {
         "SUPER, E, exec, ${editor}"
         "SUPER, B, exec, ${browser}"
         "SUPER, A, exec, ${audiomanager}"
+        "SUPER, Y, exec, ${music_laucher}"
         "SUPER, D, exec, discord"
         "SUPER, S, exec, steam"
 

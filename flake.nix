@@ -25,6 +25,12 @@
       url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # YtMusic Player
+    ytm-player = {
+      url = "github:peternaame-boop/ytm-player";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
